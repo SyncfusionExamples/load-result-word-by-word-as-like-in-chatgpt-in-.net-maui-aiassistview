@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:aiAssist="clr-namespace:Syncfusion.Maui.AIAssistView;assembly=Syncfusion.Maui.AIAssistView"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Chat;assembly=Syncfusion.Maui.Chat"
+             xmlns:thickness="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui"
+             xmlns:local="clr-namespace:AssistView"
+             x:Class="AssistView.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:GettingStartedViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <aiAssist:SfAIAssistView x:Name="sfAIAssistView"
+                                 ShowHeader="true"
+                                 EnableStopResponding="False"
+                                 InputText="{Binding InputText}"
+                                 AssistItems="{Binding AssistItems}" 
+                                 RequestCommand="{Binding AssistViewRequestCommand}" >
+
+                <aiAssist:SfAIAssistView.ResponseItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label Text="{Binding Text}" TextType="Html"
+                               CharacterSpacing="0.15"
+                               LineHeight="{OnPlatform WinUI=1.6, Default=1.2}"
+                               LineBreakMode="WordWrap"
+                               Padding="10,0,0,0" HorizontalOptions="Start"/>
+                        </Grid>
+                    </DataTemplate>
+                </aiAssist:SfAIAssistView.ResponseItemTemplate>
+            </aiAssist:SfAIAssistView>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
