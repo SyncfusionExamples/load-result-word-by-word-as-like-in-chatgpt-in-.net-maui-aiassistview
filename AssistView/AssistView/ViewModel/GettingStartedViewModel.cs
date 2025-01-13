@@ -100,6 +100,7 @@ namespace AssistView
                     this.ResponseItem.Text += word + " ";
 
                 }
+                MessagingCenter.Send(this, "ScrollTo",string.Empty);
                 this.ResponseItem.RequestItem = inputQuery;
             }
         }
