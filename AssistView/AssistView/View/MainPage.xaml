@@ -11,6 +11,10 @@
         <local:GettingStartedViewModel x:Name="viewModel"/>
     </ContentPage.BindingContext>
 
+    <ContentPage.Behaviors>
+        <local:ScrollToBehavior/>
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
         <Grid>
             <aiAssist:SfAIAssistView x:Name="sfAIAssistView"
