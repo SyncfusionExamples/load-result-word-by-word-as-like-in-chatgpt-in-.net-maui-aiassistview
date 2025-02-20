@@ -59,12 +59,13 @@ namespace AssistView
 
         private async void ExecuteRequestCommand(object obj)
         {
-            // Set Handled to true to restrict the addition of the user-requested item to the view.
-            // If the requested item is added, the response indicator will also be added.
-            (obj as Syncfusion.Maui.AIAssistView.RequestEventArgs)!.Handled = true;
+            // Set Handled to true to prevent the addition of the user-requested item to the view. If the requested item is added to the ViewModel's AssistItems collection, the response indicator will also be included immediately. 
+            // To restrict the response generator, we are adding the request item manually to collection.
+            var eventArgs = obj as Syncfusion.Maui.AIAssistView.RequestEventArgs;
+            eventArgs.Handled = true;
 
             // Retrieve the user-requested item using RequestEventArgs.RequestItem.
-            var request = (obj as Syncfusion.Maui.AIAssistView.RequestEventArgs)!.RequestItem;
+            var request = eventArgs.RequestItem;
 
             // Manually add the user-requested item to the AssistItems collection.
             this.AssistItems!.Add(request);
